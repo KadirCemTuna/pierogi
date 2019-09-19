@@ -10,7 +10,7 @@ public class IssueManagementApplication {
 		SpringApplication.run(IssueManagementApplication.class, args);
 
 
-
+//ASSAAS
 	}
 
 }
