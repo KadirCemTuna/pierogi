@@ -1,4 +1,4 @@
-package com.kadirtuna.issuemanagement.repo;
+package com.kadirtuna.issuemanagement.repository;
 
 import com.kadirtuna.issuemanagement.entity.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
