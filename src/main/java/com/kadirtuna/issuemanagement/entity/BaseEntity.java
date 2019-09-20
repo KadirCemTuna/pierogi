@@ -33,4 +33,6 @@ public abstract class BaseEntity implements Serializable {
 
   @Column(name = "status")
   private Boolean status;
+
+
 }

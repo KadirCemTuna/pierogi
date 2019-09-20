@@ -1,5 +1,6 @@
 package com.kadirtuna.issuemanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
