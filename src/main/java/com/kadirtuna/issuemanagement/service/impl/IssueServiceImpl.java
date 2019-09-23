@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -37,7 +38,8 @@ public class IssueServiceImpl implements IssueService {
 
   @Override
   public IssueDto getById(Long id) {
-    return null;
+   Issue i=issueRepository.getOne(id);
+   return modelMapper.map(i,IssueDto.class);
   }
 
   @Override
@@ -50,7 +52,20 @@ public class IssueServiceImpl implements IssueService {
   }
 
   @Override
-  public Boolean delete(IssueDto issue) {
-    return null;
+  public Boolean delete(Long issueID) {
+      issueRepository.deleteById(issueID);
+    return true;
+  }
+
+  @Override
+  public IssueDto update(Long id, @Valid IssueDto issue) {
+    Issue issueDB=issueRepository.getOne(id);
+    if(issueDB==null) throw new IllegalArgumentException(id+" Issue Does Not Exist!");
+    issueDB.setDescription(issue.getDescription());
+    issueDB.setDetails(issue.getDetails());
+    issueDB.setIssueStatus(issue.getIssueStatus());
+
+    issueRepository.save(issueDB);
+    return modelMapper.map(issueDB,IssueDto.class);
   }
 }
